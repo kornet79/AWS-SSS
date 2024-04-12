@@ -1,0 +1,59 @@
+---노션---
+https://incredible-guan-388.notion.site/10-EC2-bdf18e60dc9746a7b68caca008c49eba?pvs=74
+
+## **안녕하세요. 쁘띠 공주입니다!
+오늘 저희가 알아볼 것은 EC2의 유형과 크기에 대해서 알아보겠습니다.**
+
+### 우선 EC2의 유형과 크기를 알아야 하는 이유를 먼저 살펴 보겠습니다.
+
+**서버를 RPG 게임으로 예를 들어 보겠습니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/c1abd30f-e2c5-44e4-a6d8-08f18da7427b/Untitled.png)
+
+**([출처](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.inven.co.kr%2Fboard%2Fmaple%2F2304%2F26105&psig=AOvVaw0XloYQSv1ivGyns7WTlorI&ust=1709475574591000&source=images&cd=vfe&opi=89978449&ved=0CBQQjhxqFwoTCIDxsPXi1YQDFQAAAAAdAAAAABAD))**
+
+**RPG게임에서는 스탯(*능력을 계량화한 시스템* )이란 시스템이 존재합니다. 
+이 스탯은 캐릭터의 방향성을 잡아주게 됩니다. {
+**힘의 스탯을 찍으면 *전사* 로 전직 **하기 쉽고*,*
+민첩 과 같은 스탯을 찍으면 *도적* 이나 *궁수* 로 전직하기 쉬워짐 }
+스탯은 RPG 안에서 굉장히 중요한 역할을 하고 있다고 볼 수 있죠. 
+서버 또한 마찬가지입니다, 서버를 캐릭터로 생각하고 각각의 스탯을 CPU*,* RAM*,* 그래픽카드 등등 하드웨어를 스탯으로 본다면 RPG 와 매우 유사하게 됩니다. 
+서버의 하드웨어를 어느 정도*,* 어디에*,* 적절이*,* 분배해야만 
+내가 원하는 서버 방향성의 서버를 사용할 수 있는겁니다.**
+
+# **인스턴스 EC2의 유형**
+
+- **인스턴스 유형 = 직업**
+- **인스턴스 사이즈 = 레벨**
+- **각 인스턴즈 별로 사용 목적에 따라 최적화**
+    - **예 : 메모리 위주 *,* CPU위주 *,* 그래픽 카드 위주 등등**
+- **타입 별로 이름 부여**
+    - **예: t타입  *,* m타입 *,* inf타입 등**
+- **타입 별 *,* 세대 별로 숫자 부여**
+    - **예: m5 = m인스턴스의 5번째 세대**
+- **t4g = t4 인스턴스 중 AWS Graviton 프로세서를 사용(g) = t4g**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/096ddbad-4010-447b-903b-347b283a2707/Untitled.png)
+
+**네….여러분들 다 외우실 필요는 꼭! 없긴 한데..그래도 외우면 좋죠?**
+
+# **인스턴스의 크기!**
+
+- **인스턴스의 cpu갯수 *,* 메모리크기 *,* 성능 등으로 사이즈 결정**
+- **크기가 클 수록**
+    - **더 많은 메모리**
+    - **더 많은 CPU**
+    - **더 많은 네트워크 대역폭**
+    - **EBS와의 통신 가능한 대역폭**
+
+**간단한게 저희가 가장 많이 사용하는 t2 마이크로 를 예로 들어보겠습니다!**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/3acc8288-d76e-42a7-abcb-86ac8e8a70cc/Untitled.png)
+
+**위 자료에서 보시는 것처럼 아래로 내려갈수록 CPU도 수가 많아지고 네트워크 성능 또한 올라가면서 가격 변동이 많이 올라가는 것을 볼 수 있습니다. 시간마다 나가는 돈이 다르니 자신에게 맞는 유형과 타입을 고르시면 좋을 것 같습니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/7927140d-9452-45be-b0a2-4cd4b5ed7d6e/Untitled.png)
+
+**(읽는 법 참고 바랍니다)**
+
+**10강 끝**
