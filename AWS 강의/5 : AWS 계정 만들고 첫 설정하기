@@ -1,0 +1,175 @@
+-----노션-----
+https://incredible-guan-388.notion.site/5-AWS-7359017f707c4271a2d7365d93e69441
+
+
+### **여러분들 안녕하세여! 
+오늘은 이론만 배워서 지겨워 하시는 분들을 위해 
+오늘 바로 약간의 실습을 하게 되는 날인데요! 
+처음인 만큼 잘 따라와 주시면 감사하겠습니다.**
+
+### 우선 먼저 계정 생성을 해야겠죠?
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/e370dd18-2beb-4158-99fd-8579eeda9c60/Untitled.png)
+
+**처음 생성할 때 주의사항은 위에 올려두었으니 참고하시면서 생성해주세요.**
+
+**그리고 처음 생성하시면 루트 유저가 생성이 됩니다. 
+그렇다면 이 루트 유저가 무엇인지? 알아보겠습니다.**
+
+### USER ! 먼저 하기 전에 자신이 어떤 계정으로
+무슨 일을 하게 되고 어떤 계정들이 있는지는 알고 해야겠죠?
+
+### 루트 유저(Root User)
+
+- **생성한 계정의 모든 권한을 자동으로 가지고 있음**
+- **생성시 만든 이메일 주소로 로그인**
+- **탈취 당했을 때 복구가 매우 힘듬 : 사용을 자제하고 MFA(일회용 패스워드) 설정 필요**
+- **루트 유저는 관리용으로만 이용 : 계정 설정 변경, 빌링 등**
+- **AWS API 호출 불가(AccessKey/Secret AccessKey 부여 불가)**
+
+**정리! 한마디로 준내 중요한 계정**
+
+### IAM User
+
+- **IAM(identity and Access Management)을 통해 생성한 유저**
+- **만들 떄 주어진 아이디로 로그인**
+- **기본 권한 없음 : 따로 권한을 부여해야 함**
+    - **예 관리자 IAM USER 개발자 IAM USER, 디자이너 IAM USER, 회계팀 IAM USER**
+- **꼭 사람이 아닌 어플리케이션 등의 가상의 주체를 대표할 수도 있음**
+- **AWS API호출 가능**
+    - **AccessKey : 아이디 개념**
+    - **Secret Access Key : 패스워드 개념**
+- **AWS의 관리를 제외한 모든 작업은 관리용 IAM USER를 만들어 사용**
+- **권한 부여시 루트 유저와 같이 모든 권한을 가질 수 있지만 빌링 관련 권한은 루트 유저가 허용해야 함**
+
+**정리! 한마디로 유용하게 쓰이는 커스텀 마이징 계정**
+
+자 이제 AWS의 계정에 알고 있으니 어떤 것이 지원이 되는지 알아볼까요?
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/e34b5b26-f6e7-4e0d-8dc5-337cca799abc/Untitled.png)
+
+**윗 자료는 여러분들의 이메일로 AWS 계정을 만들었을 때 기본적으로 지원되는 서비스들 이라고 생각하시면 편합니다 물론 저것들만 제공되는 것은 아니니 걱정하지 마세여**
+
+**저희는 오늘 저 VPC 안에 있는 서비스를 배우기에는 아직 이르니 IAM 이라는 녀석만 알아보겠습니다.**
+
+## 자자 이제 지겨운 이론은 끝 바로 실습으로 넘어가 볼까요?
+
+**우선 실습에 가기 전 순서 먼저 말씀드리겠습니다.**
+
+1. **AWS 계정 만들기 (이것은 자신의 명의로 되어있는 신용카드가 필요함)**
+2. **루트 유저로 로그인하기**
+3. **루트 유저 MFA 설정하기**
+    1. **구글 OTP (안드로이드/아이폰) 다운로드 필요**
+4. **계정 별명 생성하기**
+5. **관리 권한(Admin Access) 가진 IAM 유저 생성하기**
+6. **루트 유저로 로그아웃하고 IAM 유저로 로그인하기 (계정 별명 활용)**
+
+이제 계정 생성을 하는데 그 과정은 우리에 킹왕짱 AWS가 설명해주니 걱정 ㄴㄴ
+
+https://docs.aws.amazon.com/ko_kr/accounts/latest/reference/manage-acct-creating.html
+
+그래도 문제가 있으면? 그렇다면 쁘띠 공주에게 물어보시면 천천히 친절하게 알려드리겠습니다.
+
+계정 생성과 로그인에 성공하셨다면 저와 비슷한 화면이 나올 겁니다. 여기서 보안 자격 증명 을 눌러 MAF 설정해야 합니다. 그리고 옆에 구글 OTP 가 깔려있는 핸드폰을 준비 해주세여~
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/8a225f02-bae6-4baa-be64-16f03a8a85a5/Untitled.png)
+
+자 다음
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/1bb80a5f-071c-418c-a8d7-6e93b5921631/Untitled.png)
+
+딱 봐도 이거인 거 같죠? 네 누르세여
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/9bfcd5f2-a469-4111-9f79-3a6dfd5d9047/Untitled.png)
+
+자 여기서 이름을 입력하라 하는데 자기가 기억할 수 있는 이름으로 하시는 게 굿
+
+대신 조건 : 최대 128자입니다. 영숫자 및 '+ = , . @ - _' 문자를 사용하세요.
+
+다음 눌러 주시고여
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/65ebd37e-5513-4416-bda1-92f229d0b224/Untitled.png)
+
+이러한 화면이 뜨는데 저희가 준비하라 했던 구글 OTP 있죠? 내 찍으세여
+
+**(위에 QR 코드는 꼭!꼭! 자신의 컴퓨터의 저장해 주세여 계정을 분실 하였을 때 찾을 수 있는 방법이 저거입니다!)**
+
+그렇다면 1분마다 숫자 6가지가 나타나는데 처음거 MFA 코드 1 입력하시고
+
+또 1분 지나면 새로운 숫자 6개가 나오는데 그냥 바로 MFA 코드 2에 박아주세여
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/1074e711-be6e-48b0-a65c-23208ff17330/Untitled.png)
+
+그러면 짜란 MFA 연동 성공! (짝)
+
+자 다음
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/27f70fcd-7e75-4d51-a464-73207d281263/Untitled.png)
+
+대시 보드로 이동
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/d9aa7031-6639-4399-8391-5974cfec502e/Untitled.png)
+
+계정 별칭 누르시고
+
+영문으로 자신이 원하는 이름 입력하시고 완료 하시면 됩니다. (중복 안됨)
+
+자 다음 IAM 사용자를 생성 합시다.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/f5f82962-f59f-414d-81bd-55758ef741b4/Untitled.png)
+
+사용자 들어가 주시고여
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/01a105c0-6d24-4e52-a4d8-336f14b3a983/Untitled.png)
+
+사용자 생성 눌러 주세여
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/0407e7f7-08ae-4e42-a7c7-813e6e60fa77/Untitled.png)
+
+자신이 원하는 이름 입력해주시고
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/870dbcae-1268-421f-bdb1-2ce0bbb9bed7/Untitled.png)
+
+여기서 암호를 사용자 지정으로 바꿔 주시고 자신이 원하는 비밀번호를 입력해주세여
+
+그다음 아래의 권장 권한 취소해 주세여 저거는 다른 사람들이랑 할 때나 필요한 거지 저희는 혼자이기 때문에 ㄱㅊ 습니다
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/94ed3e37-6e52-4e76-bf0b-64513b67bc85/Untitled.png)
+
+그럼 이런 화면이 뜨는데 직접 정책 연결 누르시고 
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/baa7d06e-69f7-4e57-b140-658c708b0158/Untitled.png)
+
+AWS 관리형 - 직무 누르시면 맨 위에 나오는 거 체크 해주시면 됩니다
+
+(저게 빌딩만 빼고 다 되는 개쩌는 권한입니다.)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/b514ca2a-e154-4000-8a28-e7538770d78a/Untitled.png)
+
+이제 눌러 주시면 완료!
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/0f6f5003-8dab-4a12-a92d-05ceecf0e735/Untitled.png)
+
+자신의 계정을 기록 해주시면 나중에 찾기 쉬워집니다
+
+(만약 비밀번호가 공개된다면 여러분들의 계정으로 EC2 서버를 작동하고 비트 코인을 채굴하는 악덕 살인마들이 존재하니 조심하시기 바랍니다 수천 만원이 뜯길 수 있어여)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/a1b832a8-b5b3-4160-b87e-d43a865ba9a6/Untitled.png)
+
+사용자 목록을 보시면 여러분들이 방금 막 만든 사용자가 있는 걸 볼 수 있습니다.
+
+자 여기서 이 계정도 MFA 할당을 해야겠죠?
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/4dece766-d4c7-464e-8fb8-a2f0d60583f9/Untitled.png)
+
+사용자 이름 눌러 주시고
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/55dfae04-3b39-4306-be5c-15e23044e6bb/Untitled.png)
+
+아까와 똑같이 QR 코드 저장해주시고 MFA 할당해 주세여
+
+이제 여러분들은 루트 계정인 아닌 IAM 계정으로 로그인 하실 수 있습니다.
+
+5강 끝
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/6d09baf2-345e-4f63-ae65-b03e3f9aa582/Untitled.png)
