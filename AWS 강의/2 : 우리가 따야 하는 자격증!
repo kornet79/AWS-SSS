@@ -1,0 +1,141 @@
+-----노션-----
+https://incredible-guan-388.notion.site/2-be76c92012b74e049be7e16d47feed5d?pvs=74
+
+
+### **안녕하세요! 
+오늘 IT업종에 평균 연봉이 높은 IT자격증을 소개하고 
+왜 필요한지 에 대해 알려드리려고 합니다!**
+
+**먼저 결론부터 말씀드리면 바로 AWS 관련 자격증을 알려드리겠습니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/df77eaa4-0adc-4c78-8bfe-918371f3a854/Untitled.png)
+
+**그렇다면 이걸 왜? 따야 하는지 간단한 시나리오 하나를 살펴보겠습니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/24ac3b24-8a7d-4e51-883f-26468cf4414c/Untitled.png)
+
+**위와 같은 간단한 모바일 어플리케이션인데요**
+
+**모바일에서 사진을 올리면 머신러닝으로 개인지 고양이인지 구분 해주는 어플입니다. 이러한 어플의 백엔드, 즉 서버를 구성하려면 대략 화면의 요소가 필요합니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/ab1fb793-e9fc-4c8b-87f9-7d5a57fcb708/Untitled.png)
+
+**하지만! 우리 AWS 에서는 필요한 모든 구성 요소를 AWS에서 제공하는 서비스로 대체 가능합니다!. 이렇게 여러 클라우드 회사에서 필요한 서비스를 제공해주고 있기 때문에 
+작업 하나하나 스스로 만들 필요가 없습니다.**
+
+**이해하기 쉽게 집으로 설명하자면** 
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/c5968181-8dac-4b13-af69-135c8185d4fc/Untitled.png)
+
+**집을 만들 때 필요한 구성 요소들을 따로 만들 필요가 없이 이미 시판에서 만들어지고 있는 용품들을 사용 또는 구매 하여 필요한 구성 요소들을 채울 수가 있는 거죠!**
+
+**이처럼 클라우드 공간에 개발은 필요한 모든 서비스를 개발하는 것이 아닌 
+서비스를 조합해서 인프라를 구축하고 핵심 비지니스 로직만 직접 구현하는 것이 대세라고 하네요~**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/e4678a2f-265e-4661-beed-80254bc5c89e/Untitled.png)
+
+**이처럼 쉽고 간편하게 구현 할 수 있기 때문에 수많은 기업들이 클라우드를 사용 중이며 심지어 정부도 ⭑클라우드 환경⭑** **으로 전환하고 있습니다.** 
+
+**여기서 중요한 것은 클라우드 환경에서의 개발 과 이해 , 그리고 그의 맞는 기획이 IT업계에서는 엄청 중요해졌습니다. 또한 개발 , 이해 , 기획이 모든 것을 잘하기 위해서는 당연히 클라우드에 대해서 잘 알아야겠죠?**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/a7ba0b58-a807-40e0-9cc8-88d4fb26061b/Untitled.png)
+
+**사실 이미 많은 클라우드 기업들이 서비스를 제공하고 있습니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/0f9d118c-fa8b-4e05-a407-daf3fca52f2d/Untitled.png)
+
+**그중 AWS 는 수많은 기업들이 사용하는 검증된 클라우드 프로바이더이며** 
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/6a903e99-c262-4053-9006-be42ebf6667c/Untitled.png)
+
+**점유율은 32%로 1등입니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/567e7235-9ef5-49dc-828c-e8cb143c4647/Untitled.png)
+
+**그 말은 지금도 수 많은 기업들이 AWS를 사용할 수 있는 능력자를 찾고 있다고 생각합니다!**
+
+**저희가 위 자격증을 따야 하는 이유는 많지만 간단하게 요약해볼게요!**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/683652d8-59be-4ca8-b44f-ea14eba8f6a4/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/f94bad37-c1a9-4e09-b7f7-beb234205920/Untitled.png)
+
+**AWS 는 현재 *200*가지가 넘는 서비스를 가지고 있으며 지금 이 시간에도  계속 늘어나고 있습니다.**
+
+**위와 같은 공부를 “*어디서부터? 어떻게 너무 많다. ”* 라고 생각하실 수 있습니다. 하지만 꼭 모든 기능을 알 필요도 없고 시작하시는 분들에게는 자격증 공부을 준비하면서 
+공부를 하게 되면 쉽게 터득하실 수 있는 난이도 이기에 너무 어렵게 보시지 않아도 됩니다~!**
+
+**그리고..현재 AWS 사용자 분들은 현재 업계 대우도 좋다고 하네요~**
+
+**심지어 IT 업계에서 가장 많은 연봉을 받는 자격증 평균과 순위를 측정하였는데 
+AWS가 1위 더라구여~ 
+물론 자격증에도 종류가 많아 AWS 기초 자격증을 따고 
+*“우와 난 이제 부자다 하하하”*  이러시면 안돼요~**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/04a7adf9-e68a-40b5-a9dc-8dbaa6f5f5c1/Untitled.png)
+
+**저번 연도 기준 약 1억 5천만원 정도에 평균 값이 나왔다고 하니 취득할만한 이유는 생긴 거 같죠?**
+
+- **AWS 자격증 취득자 혜택**
+    
+    https://aws.amazon.com/ko/certification/benefits/
+    
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/8b599b7a-b0ff-40c4-889c-acc292d831ed/Untitled.png)
+
+**제가 설명하기에는 생각보다 혜택이 많아 위 링크를 참고하시면 도움이 될 것 같네여~
+그리고 티어마다 혜택이 다 다르기 때문에 참고해주시면 좋겠습니다.**
+
+**자 그렇다면 이제 자격증들에 종류를 알아볼까요?**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/f6a5683f-9e0b-41cb-8440-b6c5cae2e6e1/Untitled.png)
+
+**위와 같이 10가지의 자격증이 있으며,  총 4가지로 분류 할 수 있습니다.**
+
+- **4가지 분류**
+    - **1**
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/79b817c4-944f-45da-bdb8-752d4953b229/Untitled.png)
+        
+    - **2**
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/f77dc963-0ac0-4535-a4cf-44442e802a71/Untitled.png)
+        
+    - **3**
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/38055887-293c-4aa3-b2ec-ff844413771a/Untitled.png)
+        
+    - **4**
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/1671c858-8494-4e7a-b305-43bcf828d4e3/Untitled.png)
+        
+
+**시험은 대충 객관식으로 나오며 최상의 선택지를 고르는 질문 등을 합니다 그러니 이론보다는 실전에 더욱 근접한 질문들을 많이 한다고 생각합니다.**
+
+**예제 문제들을 조금 볼까요?**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/fc15f796-07d1-470d-8b0e-f03aacdad7a3/Untitled.png)
+
+**기초는 *이론을 위주로 질문*을 하고**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/114dcae5-c689-4a55-8cd0-707c0c93aab0/Untitled.png)
+
+**티어가 *올라갈수록 시나리오를 관련으로 많이 질문*합니다.**
+
+**AWS 공식적으로 테크 트리( *Tech Tree* )는 없지만** 
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/d1e262ca-df21-4a16-a3f4-c3f0c8c9bb4a/Untitled.png)
+
+**기초부터 *시작해서 나아가는 걸 추천* 합니다.**
+
+**자 이제 내가 무엇이 필요한지 알아야겠죠?**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/a506d736-fc9f-4123-aff1-322b9e277632/Untitled.png)
+
+**위 자료를 보고 내가 무엇이 필요한지 알아보도록 하세여~**
+
+# 2강 끝
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/6d09baf2-345e-4f63-ae65-b03e3f9aa582/Untitled.png)
+
+**오늘 저녁 뭐 먹지..**
