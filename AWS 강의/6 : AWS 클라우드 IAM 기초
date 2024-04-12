@@ -1,0 +1,143 @@
+----노션----
+https://incredible-guan-388.notion.site/6-AWS-IAM-2084171125504e5d9c50d235a8a77dd2?pvs=74
+
+
+### **안녕하세요! 
+이번에 알아볼 것은 AWS 에서 현재 서비스 하고 있는 IAM 이라는 서비스 입니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/ce8878c9-89f2-415f-96ea-7d038ce2f3d1/Untitled.png)
+
+- **IAM 기초**
+    
+    ## AWS 클라우드 IAM 기초
+    
+    **AWS 클라우드 IAM(IAM)은 AWS 리소스에 대한 액세스를 안전하게 제어하는 데 사용되는 서비스입니다. IAM은 사용자, 그룹 및 역할을 생성하여 AWS 서비스 및 리소스에 대한 액세스를 관리하는 데 도움이 됩니다. 또한 IAM을 사용하여 인증 및 권한 부여를 구현하고, 사용자별로 세밀한 액세스 제어를 설정할 수 있습니다.**
+    
+    **IAM은 AWS 클라우드 보안의 핵심 요소이며, 모든 AWS 사용자와 리소스에 대한 액세스를 관리하는 데 필수적입니다. IAM을 통해 AWS 리소스에 대한 보안을 강화하고, 액세스 제어 및 권한 부여를 관리함으로써 AWS 클라우드에서의 안전한 운영을 지원합니다.**
+    
+    **IAM에 대한 기초적인 개념과 기능을 이해하는 것은 AWS 클라우드를 사용하는 데 매우 중요합니다. 다음 섹션에서는 IAM의 주요 기능과 사용 방법에 대해 자세히 알아보겠습니다.**
+    
+
+**IAM 각자의 역할에 따라 권한을 부여 할 수도 있고 서비스와 리소스에 대한 액세스를 안전하게 관리할 수 있기 때문에 AWS 에 필수로 알아야 할 서비스라고 생각해서 소개하게 됐습니다.**
+
+**IAM 소개** 
+
+- **AWS 어카운트 관리 및 리소스/사용자/서비스의 권한 제어**
+    - **서비스 사용을 위한 인증 정보 투여**
+- **사용자의 생성 및 관리 및 계정의 보안**
+    - **사용자의 패스워드 정책 관리(일정 시간마다 패스워드 변경 등)**
+- **다른 계정과의 리소스 공유**
+    - **Identity Federation(Facebook 로그인, 구글 로그인 등)**
+- **계정에 별명 부여 가능 → 로그인 주소 생성 가능**
+- **IAM은 글로벌 서비스 (Region별 서비스가 아님)**
+
+**IAM 구성을 알아보겠습니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/ae4f6c26-f76c-4b9d-ae79-c8c7d2bf2a17/Untitled.png)
+
+**사용자 : 실제 aws를 사용하는 사람 혹은 어플리케이션을 의미** 
+
+**그룹 : 사용자의 집합, 그룹에 속한 사용자는 그룹에 부여된 권한을 행사**
+
+**정책(Policy) 사용자와 그룹, 역할이 무엇을 할 수 있는 지에 관한 문서, JSON(JavaScript Object Notation) 형식으로 정의** 
+
+**역할(Role) :  AWS 리소스에 부여하여 AWS 리소스가 무엇을 할 수 있는지를 정의, 혹은 다른 사용자가 역할을 부여 받아 사용, 다른 자격에 대해서 신뢰 관계를 구축 가능, 역할을 바꾸어 가며 서비스를 사용 가능**
+
+**이제 구성을 알아보았으니 JSON 이 무엇인지 알아보겠습니다.**
+
+### **JSON**
+
+- **JavaScript Object Notation**
+- **주로 다양한 프로그램 간에 데이터를 주고받기 위해 사용**
+- **매우 다양한 언어에서 언어 자체에서 지원하거나 플러그인으로 사용 가능**
+- **키- v 로 구성**
+
+**이번에는 IAM 구성을 그림으로 살펴보겠습니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/5610199a-11be-4e27-a9ad-6446167b72bf/Untitled.png)
+
+**위 자료에서 보이시는 정책을 이용한다면 사용자 또는 그룹에게 서로에 역할을 부여 할 수 있고 
+만약 다른 권한이 부여 된다 하더라도 다른 역할  즉, 그보다 상위에 있는 권한으로 수습할 수 있어
+더욱 효율적 이게 관리할 수 있다.**
+
+**자 다음으로 IAM 권한 검증 시스템에 대해서 알아보겠습니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/e83d28fd-ef1e-4f41-9e11-15691e1215e6/Untitled.png)
+
+**만일 사용자가 S3를 사용하고 싶다면?**
+
+1. **나에게 S3를 사용할 수 있는 권한이 부여되어있나?**
+2. **아니면 내가 속한 그룹에 S3를 사용할 권한이 있나?**
+3. **나에게 부여된 역할에 S3를 이용할 수 있는 정책이 부여되어 있는가?**
+
+**여기서 역할에 정책을 붙일 수 도 있기 때문에 만약 자신이 S3 를 이용하고 싶지만 
+이용할 권한이 없다고 해도 부여 받은 역할 안에  S3를 이용할 수 있는 정책(권한) 이 있다면 할수있다**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/329defd8-c43e-4595-8686-b8d04b658fa8/Untitled.png)
+
+### 지금까지 알아본 사용자의 종류를 정리 하겠습니다.
+
+- **루트 사용자 : 결제 관리를 포함한 계정의 모든 권한을 가지고 이음**
+    - **관리 목적 이외에 다른 용도록 사용하지 않는 것을 권장**
+    - **탈취 되었을 때 복구가 매우 어려움 → MFA를 설정하는 것을 권장**
+    - **MFA(Multi-factor authentication) : 일회용 패스워드를 생성하여 로그인**
+- **IAM 사용자 : IAM을 통해 생성해서 사용하는 사용자**
+    - **한 사람 혹은 하나의 어플리케이션을 의미**
+    - **설정 시 콘솔 로그인 권한 부여 가능**
+    - **설정 시 AWS 서비스를 이용할 수 있음**
+        - **Access Key**
+        - **Secret Access Key**
+    - **AdminAccess를 부여하더라도 루트 사용자로 별도의 설정을 하지 않으면 Billing 기능을  사용할 수 없음 (여기서 Billing 이란 대부분 대금 및 비용 관리 대시보드와 같은 결제 시스템에 해당한다 다른 서비스로도 사용하니 외우면 좋다)**
+
+**IAM 자격 증명 보고서**
+
+- **계정의 모든 사용자와 암호 , 엑세스 키 , MFA장치 등의 증명 상태를 나열하는 보고서를 생성하고 다운로드 가능**
+- **4시간에 한번씩 생성 가능**
+- **AWS 콘솔 , CLI , API에서 생성 요청 및 다운로드 가능**
+- **포함되는 정보**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/5cd32786-7f69-47b2-a8ec-656d73fea396/Untitled.png)
+
+**그렇다 IAM자격 증명 보고서는 나의 현재 계정의 상태와 이상을 자세히 볼 수 있는 생각보다 유용하게 쓰이는 서비스 입니다. 자주 사용할테니 알아두시면 좋습니다.**
+
+**자 그럼 약간의 실습을 해볼까요?**
+
+**우리가 저번에 만들어둔 IAM 계정으로 로그인 해주시기 바랍니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/34c1d897-956d-4814-9dc1-cd11e3b70401/Untitled.png)
+
+**저와 같은 화면이라면 검색 창에 *“IAM”* 이라고 치고** 
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/f1790373-fcfb-4dcb-a1a0-587cc5d4821d/Untitled.png)
+
+**들어가 주세여**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/ed1c0e32-9055-40c9-9265-ce78c9129caa/Untitled.png)
+
+**그럼 여러가지 서비스가 나올텐데 방금 배운 자격 증명 보고서를 클릭해주세여**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/106c7af6-5118-4236-8c34-637ee92a1ff7/Untitled.png)
+
+**바로 다운로드 해주세여**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/719bce29-3eeb-43ba-addb-27f74bed1dcf/Untitled.png)
+
+**그럼 약 2가지의 파일이 다운 받아진 것을 확인하실 수 있습니다. (여기서는 한국 표준으로 봐주세요)**
+
+**이 2가지를 엑셀과 같은 프로그램으로 실행 해주시면 로그창이 뜨는 것을 확인하실 수 있습니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/1a640664-1f7b-42f6-994a-c95954a36791/Untitled.png)
+
+## 마지막으로 IAM 모범 사례를 정리하고 강의를 마치겠습니다.
+
+- **루트 사용자는 사용하지 않기**
+- **불필요한 사용자는 만들지 않기**
+- **가능하면 그룹과 정책을 사용하기**
+- **최소한의 권한만을 허용하는 습관을 들이기(Principle of least privilege)**
+- **MFA를 활성화 하기**
+- **AccessKey 대신 역할을 활용하기**
+- **IAM 자격 증명 보고서 (Credential Report) 활용하기**
+
+**6강 끝**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/6d09baf2-345e-4f63-ae65-b03e3f9aa582/Untitled.png)
