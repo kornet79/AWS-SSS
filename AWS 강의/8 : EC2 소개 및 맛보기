@@ -1,0 +1,235 @@
+## 안녕하세요 쁘띠공주 입니다. 오늘 제가 소개해드릴 것은 AWS의 꽃 서버라고 할 수 있는 EC2 에 알아보겠습니다.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/f912f940-f8f2-4475-9194-733b8b790d22/Untitled.png)
+
+- **EC2란? (정식명칭 Amazon Elastic Compute Cloud(Amazon EC2)**
+    
+    Amazon Elastic Compute Cloud(Amazon EC2)는 Amazon Web Services(AWS) 클라우드에서 온디맨드 확장 가능 컴퓨팅 용량을 제공합니다. Amazon EC2를 사용하면 하드웨어 비용이 절감되므로 애플리케이션을 더욱 빠르게 개발하고 배포할 수 있습니다. Amazon EC2를 사용하여 원하는 수의 가상 서버를 구축하고 보안 및 네트워킹을 구성하며 스토리지를 관리할 수 있습니다. 용량을 추가(스케일 업)하여 월간 또는 연간 프로세스 또는 웹 사이트 트래픽 급증 등 컴퓨팅 사용량이 많은 작업을 처리할 수 있습니다. 사용량이 감소하면 용량을 다시 축소(스케일 다운)할 수 있습니다.
+    
+
+**쉽게 생각해서 안전하고 크기 조정이 가능한 컴퓨팅 파워를 클라우드에서 제공하는 웹 서비스 이다.**
+
+**EC2 를 사용한다는 것은 컴퓨팅을 빌려 쓰는 서비스라고 보면 된다.**
+
+- **EC2의 가격 정책 (9강스포)**
+    - On-Demand
+        - 실행하는 인스턴스에 따라 시간 또는 초당 컴퓨팅 파워로 측정된 가격을 지불
+        - 약정은 필요 없음
+        - 장기적인 수요 예측이 힘들거나 유연하게 EC2를 사용하고 싶을 때
+        - 한번 써보고 싶을때
+    - Spot Instance
+        - 경매 형식으로 시장에 남는 인스턴스를 저렴하게 구매해서 쓰는 방식
+        - 최대 90%정도 저렴
+        - 단 언제 도로 내주어야 할지 모름
+        - 시작 종료가 자유롭거나 추가적인 컴퓨팅 파워가 필요한 경우
+    - 예약 인스턴스 (Reserved Instance-RI)
+        - 미리 일정 기간(1년~3년)약정해서 쓰는 방식
+        - 최대 75%정도 저렴
+        - 수요 예측이 확실할 때
+        - 총 비용을 절감하기 위해 어느정도 기간의 약정이 가능한 사용자
+    - 전용호스트(Dedicated)
+        
+        실제 물리적인 서버를 임대하는 방식
+        
+        라이선스 이슈(Windows Server등)
+        
+        퍼포먼스 이슈 (CPU Steal등)
+        
+
+### 자 여기서 EC2가 언제 어떻게 쓰이는지 한번 알아보겠습니다.
+
+- **서버를 구축할 때**
+    - **게임서버 *,* 웹서버 *,* 어플리케이션 서버**
+- **어플리케이션을 사용하거나 호스팅할 때**
+    - **데이터베이스**
+    - **머신러닝**
+    - **비트코인 채굴**
+    - **연구용 프로그램**
+- **기타 다양한 목적**
+    - **그래픽 랜더링**
+    - **게임 등**
+
+### EC2의 특성은 아래와 같습니다.
+
+- **초 단위 온디맨드 가격 모델**
+    - **온디맨드 모델에서는 가격이 초 단위로 결정**
+    - **서비스 요금을 미리 약정 하거나 선입금이 필요 없음**
+- **빠른 구축 속도와 확장성**
+    - **몇 분이면 전 세계에 인스턴스 수백여대를 구축 가능**
+- **다양한 구성 방법 지원**
+    - **머신러닝 *,* 웹서버 *,* 게임서버 *,* 이미지처리 등 다양한 용도에 최적화된 서버 구성 가능**
+    - **다양한 과금 모델 사용 가능**
+- **여러 AWS 서비스와 연동**
+    - **오토스케일링 *,* Elastic Load Ballancer(ELB) *,* ClousdWatch**
+
+> **온디맨드란? : 요구가 있을 때는 언제든지'라는 뜻의 '온디맨드(On-Demand)' 서비스는 공급이 아닌 수요가 모든 것을 결정하는 시스템 및 전략을 총칭하는 용어로 처음 등장했습니다.**
+> 
+
+### 자자 지겨운 설명은 그만하고 이제 실습으로 넘어가 볼까요?
+
+**일단 가장먼저 EC2 라는 서버 구축을 하기 위해서는 EC2의 구성을 알아보겠습니다.**
+
+- **인스턴스**
+    - **클라우드에서 사용하는 가상 서버로 CPU *,* 메모리 *,* 그래픽카드 등 연산을 위한 하드웨어를 담당**
+- **EBS**
+    - **Elastic BLOck Stroage의 줄임말로 클라우드에서 사용하는 가상 하드디스크**
+- **AMI**
+    - **EC2 인스턴스를 실행하기 위한 정보를 담고 있는 이미지**
+- **보안 그룹**
+    - **가상의 방화벽**
+
+**위에 있는 구성은 다른 강의에서 더욱 자세히 설명 할 것이기 때문에 지금은 굳이 자세히 알 필요는 없습니다.**
+
+### 실습 내용
+
+- **목표 : EC2 한대를 프로비전 하여 웹 서버 구성하기**
+- **순서**
+    1. **EC2를 구성하기 위한 AMI  선택 (EC2를 구성하기 위한 일종의 탬플릿)**
+    2. **EC2를 유형과 사이즈 선택**
+    3. **EBS 설정 (가상의 하드 드라이브 )**
+    4. **보안 그룹 설정 (가상의 방화벽)**
+    5. **EC2 생성**
+    6. **EC2 접속 후 웹 서버 설치 및 웹 서버 실행**
+    7. **웹 브라우저에서 접속 테스트**
+
+**자 이제 여러분들의 아이디로 AWS 콘솔 창으로 이동 해주세여**
+
+### 1. EC2 클라우드의 가상 서버 검색 해주세여.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/af86672b-e78a-4e9d-ac4a-e1331180b3fc/Untitled.png)
+
+**클릭**
+
+### 2. 인스턴스 클릭
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/e9ea4ff0-308a-4859-b7a2-a667c63e6ed4/Untitled.png)
+
+### 인스턴스 시작 클릭
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/d24c29fc-bd0d-423c-874a-71c71a32ce17/Untitled.png)
+
+### 이름에는 자신이 원하는 서버 이름을 적어주시고 아마존 리눅스를 *선택* 하세요.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/d67f6c0e-798b-46f3-9236-116a9e19c858/Untitled.png)
+
+### AMI , 인스턴스 유형을 프리티어가 맞는지 재차 확인해주세요
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/ccf2e16a-d7b8-4c48-a275-2cc81f2ad33c/Untitled.png)
+
+### 새 키 페어 생성 눌러주세여
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/2d20b98b-4a33-4b06-8176-fc7dd232fe26/Untitled.png)
+
+### 키 페어 이름은 아무거나 해주시고 생성하시면 자동으로 키가 다운로드 됩니다 (키는 따로 보관 해주세요 계속 쓰는 겁니다)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/d3b59412-9204-4bde-8068-c0d49e548e8c/Untitled.png)
+
+### 요약 확인 해주시고여 인스턴스 시작!
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/32e914b9-3b0b-4682-ab51-ea94e7d38e0f/Untitled.png)
+
+### 그렇다면 안전하게 서버가 만들어진 것을 확인할 수 있습니다.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/a8ace305-ab1e-4ee1-bda9-9e4820b6b6d7/Untitled.png)
+
+### 그 다음 연결을 한번 해볼까요?
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/445ae1a4-5aa4-488e-ac5f-a0e7547b8714/Untitled.png)
+
+**클릭**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/9853edac-523e-4efb-9db7-6d5751544550/Untitled.png)
+
+**콘솔에서 연결 할 수 있기 때문에 바로 연결 눌러주세여.
+( 방금 만들었다면 5~10분정도 기다렸다가 연결해주시면 됩니다. )**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/7fe23934-56d8-4f25-8a8c-bbc3119bb167/Untitled.png)
+
+**그렇다면 해로운 새가 저희를 반겨 줄껍니다.**
+
+### 이제 리눅스 명령어를 통해 한번 웹서버를 설치 해보겠습니다.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/db71d19b-7687-405d-a0fd-12ecdb96f997/Untitled.png)
+
+**sudo - s 를 통해 관리자 권한을 가져오겠습니다. 
+(sudo ← 관리자 권한을 뜻하고 - s 는 권한을 가져오겠다라고 생각하시면 됩니다.)**
+
+**명령어 (yum install httpd - y) (웹서버를 설치 하는 명령어)**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/e786fd70-b104-46a8-986e-5e0b87201d81/Untitled.png)
+
+**그럼 뭐라뭐라 뜨시면서 완료 했다고 뜨실껍니다.**
+
+**이제 만든 서버를 시작 해야겠죠?** 
+
+**명령어( service httpd start ) (웹서버를 서비스 시작하는 명령어)**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/2f8f58e6-3491-416d-91b7-35a2dd3aad07/Untitled.png)
+
+**이제 서비스를 시작했으니 무언가라도 보여줘야겠죠? 이제 서버 파일을 만들어 봅시다.**
+
+**명령어 ( nano / var / www / html / index.html )**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/6e602dcc-bb32-48d8-b86b-93ec8f748671/Untitled.png)
+
+**그렇다면 이런 화면이 나오시는게 *정상* 입니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/6fcc5b14-0e23-4057-8832-df10fc4f1e26/Untitled.png)
+
+**이제 저장하고 나가야 겠죠? Ctrl + X 를 눌러주세요**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/7841f9d6-8e05-484b-a87f-f67508af3a37/Untitled.png)
+
+**Y 눌러서 확인해주세요. 그리고 한번 더 Enter 를 눌러주세요.**
+
+**여기까지 ok 그럼 보안 그룹을 해볼까요?**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/86835921-62f1-49af-8dd5-9913919eb5ae/Untitled.png)
+
+**보안 누르고 보안 그룹 클릭**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/8f73a4e5-5b3d-41f7-b412-a3921f9df9da/Untitled.png)
+
+**인 바운드 규칙 편집 눌러주시고여**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/008344ba-e9d9-4e90-88c7-de4d827eb010/Untitled.png)
+
+**클릭**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/1ff70724-e9cc-4184-97df-3bcc5facf8b5/Untitled.png)
+
+**저희가 방금 만든게 HTTP였죠? 유형 중에 HTTP 찾아서 설정해주세요**
+
+**사용자 지정은 IPv4 로 지정해주시고 저장**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/761103fc-0c17-4303-a648-116706c333c3/Untitled.png)
+
+**그러신 다음 인스턴스로 돌아와 자기 퍼블릭 주소를 복사해 주시고**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/4f9a0be9-7fe2-4b98-b990-cc22501d5acd/Untitled.png)
+
+**새탭을 열어 주시고 복붙**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/bee1e949-6522-419f-a563-0d3664c227ca/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/a1c478ce-248b-4706-b0ad-9b81df586f77/Untitled.png)
+
+**그렇다면 여러분들은 [hello.world](http://hello.world) 가 나오시겠지만 저는 중간에 바꿔서 다르게 나옵니다.**
+
+**다시 화면으로 돌아와서**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/348594ff-8fea-46e3-9015-baa2ecd17818/Untitled.png)
+
+# **인스턴스 종료를 꼭!!!!!!!해주시기 바랍니다.**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/49637cde-ff51-481f-8ff0-a77d6ca76039/Untitled.png)
+
+# *안그러면 돈 나갑니다 (하루 이틀 정도는 ㄱㅊ 습니다만 일주일 방치시 돈이 나갈 위험이 있으니 조심하시기 바랍니다. 종료 후 1시간뒤면 사라집니다 최대 하루 걸릴 수도 있어여 )*
+
+**아무튼 지금 까지 웹서버 만들기를 하였습니다** 
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/551221a0-6a24-4cee-8321-dfbe0bd30ef4/Untitled.png)
+
+**8강 끝**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a156cc82-d201-4160-ac40-16f8ab23f7dc/6d09baf2-345e-4f63-ae65-b03e3f9aa582/Untitled.png)
